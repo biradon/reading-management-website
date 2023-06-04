@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Management</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <h1 id="header">Reading Management</h1>
+
+    <div id="form">
+        <label for="Title">Title</label>
+        <input type="text" id="title" name="title">
+        <label for="Author">Author</label>
+        <input type="text" id="author" name="title">
+        <label for="Genre">Genre</label>
+        <input type="text" id="genre" name="title">
+        <label for="start-date">Start Date</label>
+        <input type="date" id="start-date" name="title">
+        <label for="complete-date">Complete Date</label>
+        <input type="date" id="complete-date" name="title">
+        <label for="status">Read Status</label>
+        <select name="status" id="status">
+            <option value="On Hold">On Hold</option>
+            <option value="In Process">In Process</option>
+            <option value="Completed">Completed</option>
+        </select>
+        
+        <button type="submit" id="add-button">ADD BOOK</button>
+    </div>
+    <table id="books">
+        <thead>
+            <tr>
+                <th>Title of the book</th>
+                <th>Author(s)</th>
+                <th>Literary genre (Optional)</th>
+                <th>Start date of reading</td>
+                <th>Tentative date of completion of reading</th>
+                <th>Read status</th>
+                <!-- <th id="option"></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Learning Python</td>
+                <td>O'reillyy</td>
+                <td>Non-fiction</td>
+                <td>2023-05-31</td>
+                <td>2023-06-30</td>
+                <td>In Process</td>
+            </tr>
+            
+        </tbody>
+    </table>
+<script src="app.js"></script>
+</body>
+</html>
