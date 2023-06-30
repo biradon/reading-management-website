@@ -28,7 +28,8 @@ addBtn.addEventListener("click", function(){
 addBtn.addEventListener('click', (event) =>
 {
         event.preventDefault();
-        validateInput();
+        promptUserValidation();
+        // validateInput();
 });
 
 
@@ -61,33 +62,85 @@ let addNewRow = () => {
 
 
 //loop to validation
-let validateInput = () => {
+// let validateInput = () => {
+//     if (titleInput.value ==='')
+//     {
+//         alert("Please enter your title");
+//     }
+//     /*added/changed*/
+//     else if (authorInput.value === ''){
+//         alert("Please complete Author name");
+//     }
+//     else if (statusInput.value === 'Completed' && (completeDateInput.value === '')) {
+//         alert("Please enter Complete date for Completed Books");
+//     }
+//     else if (startDateInput.value === ''){
+//         // Autofill start date
+//         const today = new Date();
+//         startDateInput.value = today.toISOString().split('T')[0];
+//         alert("You didn't enter a Start Date. It will be saved as today if you add the book.");
+//     }
+//     else if (completeDateInput.value !== '' && startDateInput.value >= completeDateInput.value){
+//         alert("The start date should be less than complete date. Please try again");
+
+//     } else {
+//         addNewRow();
+//         alert("Form submitted successfully!");
+//     }
+// };
+
+
+promptUserValidation = () => {
+    // Create the array to add the prompt
+    let checklist = [];
+
+    // Check user input the title or not, if not
+    // add to the checklist array
     if (titleInput.value ==='')
     {
-        alert("Please enter your title");
+        checklist.push('Please enter book\'s title');
     }
-    /*added/changed*/
-    else if (authorInput.value === ''){
-        alert("Please complete Author name");
+
+    // Check user input the author or not, if not
+    // add to the checklist array
+    if (authorInput.value === ''){
+        checklist.push('Please enter author\'s name');
     }
-    else if (statusInput.value === 'Completed' && (completeDateInput.value === '')) {
-        alert("Please enter Complete date for Completed Books");
+
+    // Check user input the completed day or not, if not
+    // add to the checklist array
+    if (statusInput.value === 'Completed' && (completeDateInput.value === '')) {
+        checklist.push('Please enter Complete date for Completed Books');
     }
-    else if (startDateInput.value === ''){
-        // Autofill start date
+
+    // Autofill start date if it's empty
+    if (startDateInput.value === ''){
         const today = new Date();
         startDateInput.value = today.toISOString().split('T')[0];
-        alert("You didn't enter a Start Date. It will be saved as today if you add the book.");
     }
-    else if (completeDateInput.value !== '' && startDateInput.value >= completeDateInput.value){
-        alert("The start date should be less than complete date. Please try again");
 
-    } else {
+    // Check if start date greater than completed day
+    // add to the checklist array
+    if (startDateInput.value >= completeDateInput.value){
+        checklist.push('The start date should be less than complete date. Please try again');
+    }
+
+    // If the checklist is null print the success alert
+    // and add new row to the table
+    if (checklist.length == 0)
+    {
         addNewRow();
         alert("Form submitted successfully!");
-
+        return;
+    // If there array still have element inside
+    // alert the user to input
+    } else
+    {
+        alert(checklist.join('\n'));
+        // Empty the checklist to check for the next time
+        checklist = [];
     }
-};
+}
 
 
 
@@ -101,5 +154,3 @@ let validateInput = () => {
 //         document.getElementById('').value = this.cells[0].innerHTML; 
 //     }
 // }
-
-
